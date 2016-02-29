@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ShoppingCartExample</title>
+  <title>Shopping cart</title>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <% if request.ssl? %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
-  <% else %> 
-    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
-  <% end %>
+ 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
+<div class="container-fluid">
+     <h1>Cart Application</h1>
+    </div>
+    <div class="container">
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Electronics <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/electronics">Tablet</a></li>
+        <li><a href="/electronics">Laptop</a></li>
+        <li><a href="/electronics">Smartphone</a></li>                        
+      </ul>
+    </li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dresses <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/dresses">Salwar</a></li>
+        <li><a href="/dresses">Saree</a></li>
+        <li><a href="/dresses">Shirt</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/home">Sofas</a></li>
+        <li><a href="/home">Kitchen</a></li>
+        <li><a href="/home">Diningtable</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Books_Media <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/books_media">Graphic Novels</a></li>
+        <li><a href="/books_media">Hollywood Movies</a></li>
+        <li><a href="/books_media">New Releases</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sports <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/sports">T-Shirts</a></li>
+        <li><a href="/sports">Football Shoes</a></li>
+        <li><a href="/sports">Track Suits</a></li>                        
+      </ul>
+    </li>
+           </ul>
     <div class="row">
       <div class="col-xs-6">
         <h1><%= link_to "My Store", root_path %></h1>
@@ -27,6 +67,10 @@
     <hr>
     <%= yield %>
   </div>
-
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+   </script>
 </body>
 </html>

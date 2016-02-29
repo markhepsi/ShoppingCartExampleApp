@@ -1,0 +1,235 @@
+<%= select_tag "people", options_from_collection_for_select(@products, "id", "name"), :style => "width:100%;", :id => "product_filter" %>
+<!-- Bottom bar with filter and cart info -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="assets/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="assets/css/jquery-ui-1.10.2.custom.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="assets/css/stream.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
+    <script src="../dist/filter.js" type="text/javascript"></script>
+    <script src="data/products.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">FILTER.JS</h1>
+      <div class="sidebar col-md-3">
+        <div>
+          <h4 class='col-md-6'>List(<span id="total_List">20</span>)</h4>
+          <div class="col-md-6 progress">
+            <div class="progress-bar" id="stream_progress" style="width: 0%;">0%</div>
+          </div>
+        </div>
+        <div>
+          <label class="sr-only" for="searchbox">Search</label>
+          <input type="text" class="form-control" id="searchbox" placeholder="Search &hellip;">
+          <span class="glyphicon glyphicon-search search-icon"></span>
+        </div>
+        <br>
+        <div class="well">
+          <fieldset id="Discount_criteria">
+            <legend>DISCOUNT</legend> <span id="discount_range_label" class="slider-label"></span>
+            <div id="discount_slider" class="slider">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="30% - 40%">
+                <span>30% - 40%</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="40% - 50%">
+                <span>40% - 50%</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="More than 50%">
+                <span>More than 50%</span>
+              </label>
+            </div>
+            <input type="hidden" id="discount_filter" value>
+          </fieldset>
+        </div>
+        <div class="well">
+          <fieldset id="price_criteria">
+            <legend>PRICE</legend> <span id="price_range_label" class="slider-label"></span>
+            <div id="price_slider" class="slider">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Rs.250 and below">
+                <span>Rs.250 and below</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Rs.25000 and above">
+                <span>Rs.25000 and above</span>
+              </label>
+            </div>
+            <input type="hidden" id="price_filter" value>
+          </fieldset>
+        </div>
+         <div class="well">
+          <fieldset id="Brand_criteria">
+            <legend>BRAND</legend> <span id="brand_range_label" class="slider-label"></span>
+            <div id="brand_slider" class="slider">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value>
+                <span>Dell</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value>
+                <span>hp</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value>
+                <span>samsung</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value>
+                <span>silver</span>
+              </label>
+            </div>
+             <div class="checkbox">
+              <label>
+                <input type="checkbox" value>
+                <span>fastrack</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value>
+                <span>cotton </span>
+              </label>
+            </div>
+            <div class="checkbox">
+            <label>
+                <input type="checkbox" value>
+                <span>synthetic</span>
+                </label>
+            <input type="hidden" id="brand_filter" value>
+          </fieldset>
+        </div>
+      <div class="well">
+        <legend>AVAILABILITY</legend>
+          <div class="checkbox">
+          <label>
+          <input type="checkbox" value="Exclude out of stock">
+          <span>Exclude out of stock</span>
+          </label>
+          </div>
+          <input type="hidden" id="Exclude out of stock" value>
+          </div>
+
+        <div class="well">
+          <fieldset id="genre_criteria">
+            <legend>Genre</legend>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="All" id="all_genre">
+                <span>All</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Price">
+                <span>Price</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Discount">
+                <span>Discount</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Electronics">
+                <span>Electronics</span> 
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Dresses">
+                <span> Dresses </span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Books & Media">
+                <span> Books& Media </span>
+              </label>
+            </div>
+            
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Sports">
+                <span>Sports</span>
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="Home">
+                <span> Home </span>
+              </label>
+            </div>
+            
+      <div class="col-md-9">
+        <div class="products content row" id="products"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="galleryTab">
+  <a data-rel="all"  href="javascript:;" class="filter active">View all</a>
+  <a data-rel="sar" href="javascript:;" class="filter">Saree</a>
+  <a data-rel="sal" href="javascript:;" class="filter">Salwar</a>
+  <a data-rel="mob" href="javascript:;" class="filter">Mobile</a>
+  <a data-rel="lap" href="javascript:;" class="filter">laptop</a>
+  <a data-rel="wat" href="javascript:;" class="filter">watch</a>
+  <a data-rel="sof" href="javascript:;" class="filter">sofas</a>
+  <a data-rel="led" href="javascript:;" class="filter">LED tv</a>
+  <a data-rel="ves" href="javascript:;" class="filter">vessel</a>
+
+
+</div>
+<div class="galleryWrap">
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="sar" href="./saree/1-1-ss801-a-cd-enterprise-200x200-imae94umb59s2fst.jpeg"><img src="./original/1-1-ss801-a-cd-enterprise-200x200-imae94umb59s2fst.jpeg" alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="sal" href="./salwar/salwar.jpeg"><img src="./original/salwar.jpeg" alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="mob" href="./mobile/smartphone.jpeg"><img src="./original/smartphone.jpeg" alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="lap" href="./laptop/_dell_laptop.jpeg"><img src="./original/_dell_laptop.jpeg" alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="wat" href="./watch/20130925-202730-vn-women3.png"><img src="./original/20130925-202730-vn-women3.png" alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="sof" href="./sofas/sofas.jpeg"><img src="./original/sofas.jpeg" alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="led" href="./LED tv/LED_tv.jpeg"><img src="./original/LED_tv.jpeg"alt="" /></a>
+  <a class="fancybox" data-fancybox-group="gallery" data-filter="ves" href="./vessel/silver.jpeg"><img src="./original/silver.jpeg" alt="" /></a>
+
+  ... etc.
+</div>
+<script id="products-template" type="text/html">
+  <div class="col-md-4 products">
+    <div class="thumbnail">
+        <i class="glyphicon glyphicon-star"></i>
+      </span>
+     </div>
+  </div>
+</script>
+<script id="genre_template" type="text/html">
+</script>
+  </body>
+</html>
+

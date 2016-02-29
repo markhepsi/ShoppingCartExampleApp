@@ -24,3 +24,4 @@ private
     params.require(:order_item).permit(:quantity, :product_id)
   end
 end
+
